@@ -1,0 +1,56 @@
+# https://terraform-docs.io/user-guide/configuration/
+
+formatter: "markdown"
+
+version: ""
+
+# header-from: .config/assets/header.md
+# footer-from: .config/assets/footer.md
+
+recursive:
+  enabled: false
+  path: ""
+
+sections:
+  hide: []
+  show: []
+
+content: |-
+  {{ .Requirements }}
+  {{ .Providers }}
+  {{ .Modules }}
+  {{ .Outputs }}
+  {{ .Inputs }}
+  {{ .Resources }}
+  {{ .Footer }}
+
+output:
+  file: "README.md"
+  mode: inject
+  template: |-
+    <!-- BEGIN_TF_DOCS -->
+    {{ .Content }}
+    <!-- END_TF_DOCS -->
+
+output-values:
+  enabled: false
+  from: .config/assets/output_values.json
+
+sort:
+  enabled: true
+  by: name
+
+settings:
+  anchor: true
+  # color: true
+  default: true
+  description: false
+  escape: true
+  hide-empty: true
+  html: true
+  indent: 2
+  lockfile: true
+  read-comments: false
+  required: false
+  sensitive: false
+  type: false
